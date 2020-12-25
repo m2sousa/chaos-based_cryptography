@@ -1,5 +1,8 @@
+# Report-specific ignores
 *.log
 *.pdf
 *.aux
 *.out
+
+# Project-specific ignores
 build/

@@ -2,7 +2,7 @@ Chaos-based cryptography
 ========================
 > [Link to the initial repository on GitHub](https://github.com/NuxDD/chaos-based_cryptography)
 
-#Dependencies
+Dependencies
 ------------
 
 * At least C++11 is required to compiled the wrapper of the python matplotlib library.
