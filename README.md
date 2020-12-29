@@ -21,12 +21,15 @@ Todos and issues
 -----------------
 
 * Add the .bib support report
-* Add usage to readme 
-* Add an introduction to the README
+* Add usage to README.md 
+* Add an introduction to README.md
 * Getters need optimization to reduce exec time
-* Add a complete documentation to Image class
+* Add documentation Image class
+* Add documentation ChaoticMap class
+* Add documentation LogisticMap class
 
 References
 -----------
 
 1. The matplotlib C++ wrapper - [github.com/lava/matplotlib-cpp](https://github.com/lava/matplotlib-cpp)
+2. Details on the BMP file format - [wikipedia.com/BMP\_file\_format](https://en.wikipedia.org/wiki/BMP_file_format)
