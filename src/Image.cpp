@@ -9,14 +9,15 @@ Image::Image(std::string filename){
 		exit(1);
 	}
 
+	// No skip on white spaces to avoid byte missing while reading
+	inputFile >> std::noskipws;
+
 	this->getFileHeader(&inputFile);
 
 	this->getDibHeader(&inputFile);
 
 	this->getData(&inputFile);
 
-	this->displayInfo();
-	
 	inputFile.close();	
 }
 
@@ -24,6 +25,23 @@ void Image::displayInfo(){
 	std::cout.setf(std::ios::dec, std::ios::basefield);
 	std::cout << "Width : " << getWidth() << '\n';
 	std::cout << "Height : " << getHeight() << '\n';
+	std::cout << "Number of bits per pixel : " << getBitPerPixel() << '\n';
+}
+
+void Image::encrypt(ChaoticMap &cmap){
+	// Checking if a pixel is encoded on 32 bits, otherwise, padding should be considered
+	if(this->getBitPerPixel() == 0x0020){
+		if(cmap.key.size() == this->data.size()){
+			const unsigned int sizeData {static_cast<unsigned int>(this->data.size())};
+			for(unsigned int i {0}; i<sizeData; ++i){
+				uint8_t encodedByte = this->data[i] | cmap.key[i];
+				this ->data[i] = encodedByte;
+			}
+		} else {
+			std::cerr << "Please generate a key with the length of the image data.";
+			exit(1);
+		}
+	}
 }
 
 uint32_t Image::getWidth(){
@@ -42,6 +60,13 @@ uint32_t Image::getHeight(){
 						dibHeader[offset + 2] << 16 |
 						dibHeader[offset + 3] << 24;
 	return height;
+}
+
+uint16_t Image::getBitPerPixel(){
+	int offset {0x0E};
+	uint16_t bpp = 	dibHeader[offset]			|
+					dibHeader[offset + 1] << 8;
+	return bpp;
 }
 
 void Image::getFileHeader(std::ifstream* file){

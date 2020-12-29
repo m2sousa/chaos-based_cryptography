@@ -6,6 +6,8 @@
 #include <iostream>
 #include <fstream>
 
+#include "ChaoticMap.h"
+
 class Image
 {
 	public:
@@ -13,11 +15,11 @@ class Image
 
 	public:
 		void displayInfo();
-		void encrypt(); //TODO: add key as parameter
+		void encrypt(ChaoticMap &cmap); 
 		void save();
-		void toBW();
 		uint32_t getWidth();
 		uint32_t getHeight();
+		uint16_t getBitPerPixel();
 
 
 	private:
