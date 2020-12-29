@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 project(chaos-based_cryptography)
+set(CMAKE_CXX_STANDARD 11)
 
 # Adding the Python header for matplotlibcpp.h
 find_package(PythonLibs REQUIRED)
