@@ -34,7 +34,7 @@ void Image::encrypt(ChaoticMap &cmap){
 		if(cmap.key.size() == this->data.size()){
 			const unsigned int sizeData {static_cast<unsigned int>(this->data.size())};
 			for(unsigned int i {0}; i<sizeData; ++i){
-				uint8_t encodedByte = this->data[i] | cmap.key[i];
+				uint8_t encodedByte = this->data[i] ^ cmap.key[i];
 				this ->data[i] = encodedByte;
 			}
 		} else {
@@ -42,6 +42,14 @@ void Image::encrypt(ChaoticMap &cmap){
 			exit(1);
 		}
 	}
+}
+
+void Image::save(std::string filename){
+	std::ofstream outputFile {filename, std::ios::out | std::ios::binary};
+	outputFile.write(reinterpret_cast<const char*>(&fileHeader[0]), fileHeaderLength);
+	outputFile.write(reinterpret_cast<const char*>(&dibHeader[0]), sizeof(uint8_t)*dibHeader.size());
+	outputFile.write(reinterpret_cast<const char*>(&data[0]), sizeof(uint8_t)*data.size());
+	outputFile.close();
 }
 
 uint32_t Image::getWidth(){

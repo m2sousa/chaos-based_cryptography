@@ -16,7 +16,7 @@ class Image
 	public:
 		void displayInfo();
 		void encrypt(ChaoticMap &cmap); 
-		void save();
+		void save(std::string filename);
 		uint32_t getWidth();
 		uint32_t getHeight();
 		uint16_t getBitPerPixel();
