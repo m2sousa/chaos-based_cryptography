@@ -5,4 +5,5 @@
 *.out
 
 # Project-specific ignores
-build/
+build/*
+output/*
