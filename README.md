@@ -11,7 +11,7 @@ Dependencies
 
 Example of installation on ArchLinux :
 
-	sudo pacman -S base-devel python3.8 python-matplotlib tk textlive-most
+	sudo pacman -S base-devel python3 python-matplotlib tk texlive-most
 
 Or on Ubuntu :
 
