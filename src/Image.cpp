@@ -1,3 +1,10 @@
+/**
+ * @file 	Image.cpp
+ * @brief	BMP image class implementation
+ * @author 	De Sousa Maxime / NuxDD
+ * @date 	December 2020
+ */
+
 #include "Image.h"
 
 Image::Image(std::string filename){
