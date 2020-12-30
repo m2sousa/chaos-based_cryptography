@@ -1,3 +1,10 @@
+/**
+ * @file	ChaoticMap.cpp
+ * @brief	ChaoticMap class implementation
+ * @author	De Sousa Maxime / NuxDD
+ * @date	December 2020
+ */
+
 #include "ChaoticMap.h"
 
 ChaoticMap::ChaoticMap(const std::vector<double> &parameters, const std::vector<double> &initialConditions){
