@@ -79,6 +79,15 @@ class Image
 		 */
 		uint16_t getBitPerPixel();
 
+		/**
+		 * @brief	Extract a single color of the data.
+		 * @details Extract a single color of the data by setting each bytes which are not related to the provided color or the alpha to zero.
+		 *
+		 * @param color	Code of the color (see enum definition) to extract.
+		 */
+		enum colorCode {blue=0, green=1, red=2};
+		void extractColor(colorCode color);
+
 
 	private:
 

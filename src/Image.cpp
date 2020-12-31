@@ -84,6 +84,19 @@ uint16_t Image::getBitPerPixel(){
 	return bpp;
 }
 
+void Image::extractColor(colorCode color){
+	unsigned int sizeData = static_cast<unsigned int>(this->data.size());
+	for(unsigned int i {0}; i<sizeData; ++i){
+		int mod = i%4;
+		// Needed to avoid rewriting the alpha
+		if(mod != 3){
+			if(mod != color){
+				this->data[i] = 0;
+			}
+		}
+	}
+}
+
 void Image::getFileHeader(std::ifstream* file){
 	uint8_t readedByte{};
 	for(int i {0}; i<fileHeaderLength; ++i){
