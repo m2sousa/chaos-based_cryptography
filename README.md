@@ -24,8 +24,6 @@ Todos and issues
 * Add usage to README.md 
 * Add an introduction to README.md
 * Getters need optimization to reduce exec time
-* Add documentation ChaoticMap class
-* Add documentation LogisticMap class
 
 References
 -----------
