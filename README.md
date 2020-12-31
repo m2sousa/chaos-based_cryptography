@@ -11,17 +11,44 @@ Dependencies
 
 Example of installation on ArchLinux :
 
-	sudo pacman -S base-devel python3 python-matplotlib tk texlive-most
+	# pacman -S base-devel python3 python-matplotlib tk texlive-most
 
 Or on Ubuntu :
 
-	sudo apt-get install python3.8 python3.8-dev python3-tk python3-matplotlib texlive-base
+	# apt-get install python3.8 python3.8-dev python3-tk python3-matplotlib texlive-base
+
+Build
+------
+**Building the source code :**
+
+The recommended way to build the project is to use CMake as build system as follow :
+
+	$ mkdir build/ && cd build/
+	$ cmake ..
+	$ make
+
+If you make the choice of a hand-compiled project, be careful to include the python header.
+
+**Compiling the LaTeX report :**
+
+The easiest way to compile the LaTeX report is to be at the root of the directory and run :
+
+	$ ./compileReport.sh
+
+Usage
+-----
+The program needs to be run as follow :
+
+	$ ./chaos-based_cryptography inputFilename outputFilename
+
+Example, to encrypt the file _grenoble\_city.bmp_ in the input folder, and save it as _encryptedImg.bmp_ in the output folder :
+
+	$ ./chaos-based_cryptography grenoble_city encryptedImg
 
 Todos and issues
 -----------------
 
 * Add the .bib support report
-* Add usage to README.md 
 * Add an introduction to README.md
 * Getters need optimization to reduce exec time
 
