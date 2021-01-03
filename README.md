@@ -2,6 +2,13 @@ Chaos-based cryptography
 ========================
 > [Link to the initial repository on GitHub](https://github.com/NuxDD/chaos-based_cryptography)
 
+_Disclaimer : This project provides an introduction to the chaos-based cryptography, the algorithm isn't proved resistant to known crypt-analytical attacks. Be careful with your data._
+
+Code structure
+---------------
+
+![Code Structure UML diagram](UMLDiagram.png)
+
 Dependencies
 ------------
 
@@ -50,6 +57,7 @@ Todos and issues
 
 * Add the .bib support report
 * Add an introduction to README.md
+* Seg fault happens everytime the plot figure are closed (prob. an issue of the lib ?)
 * Getters need optimization to reduce exec time
 
 References
