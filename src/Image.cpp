@@ -97,6 +97,95 @@ void Image::extractColor(colorCode color){
 	}
 }
 
+void Image::displayPixelCorrelation(int nbrPixelDisplayed){
+	
+	std::vector<int> xAxis{};
+	xAxis.reserve(nbrPixelDisplayed);
+	std::vector<int> yAxis{};
+	yAxis.reserve(nbrPixelDisplayed);
+
+	int width {static_cast<int>(this->getWidth())};
+	int height {static_cast<int>(this->getHeight())};
+	int bytesPerPixel {static_cast<int>(this->getBitPerPixel())/8};
+	int imgSize {width * height * bytesPerPixel};
+
+	for(int i{0}; i<nbrPixelDisplayed; ++i){
+		int r = rand() % imgSize;
+		xAxis.push_back(static_cast<int>(data[r]));
+		yAxis.push_back(static_cast<int>(data[r+4]));
+	}
+
+	//Computation the correlation coefficient, could be done in the last for loop, but done right here for lisibility
+	double xesperance {};
+	double yesperance {};
+
+	for(int i {0}; i<nbrPixelDisplayed; ++i){
+		xesperance += xAxis[i]; 
+		yesperance += yAxis[i]; 
+	}
+	xesperance = xesperance / nbrPixelDisplayed;
+	yesperance = yesperance / nbrPixelDisplayed;
+
+	double dx{};
+	double dy{};
+	double cov{};
+
+	for(int i {0}; i<nbrPixelDisplayed; ++i){
+		dx += (xAxis[i] - xesperance)*(xAxis[i] - xesperance);
+		dy += (yAxis[i] - yesperance)*(yAxis[i] - yesperance);
+		cov += (xAxis[i] - xesperance)*(yAxis[i] - yesperance);
+	}
+	dx = dx / nbrPixelDisplayed;
+	dy = dy / nbrPixelDisplayed;
+	cov = cov / nbrPixelDisplayed;
+
+	double correlationCoef {cov/(std::sqrt(dx * dy))};
+	std::cout << "Correlation coefficient : " << correlationCoef << '\n';
+		
+	matplotlibcpp::figure();
+	matplotlibcpp::scatter(xAxis, yAxis);
+
+	std::string xl {"Byte value at (x,y)"};
+	std::string yl {"Byte value at (x,y+1)"};
+	matplotlibcpp::xlabel(xl);
+	matplotlibcpp::ylabel(yl);
+}
+
+void Image::displayColorHistogram(colorCode color){
+	std::vector<int> histValue{};
+
+	unsigned int sizeData = static_cast<unsigned int>(this->data.size());
+	histValue.reserve(sizeData/4);
+	for(unsigned int i {0}; i<sizeData; ++i){
+		int mod = i%4;
+		if(mod == color){
+			histValue.push_back(this->data[i]);
+		}
+	}
+
+	matplotlibcpp::figure();
+	std::string c {};
+	switch(color){
+		case Image::colorCode::red:
+			c = "r";
+			break;
+		case Image::colorCode::blue:
+			c = "b";
+			break;
+		case Image::colorCode::green:
+			c = "g";
+			break;
+
+	}
+	matplotlibcpp::hist(histValue, 64, c, 1.0);
+	matplotlibcpp::grid(true);
+
+	std::string xl {"Byte value"};
+	std::string yl {"Counts"};
+	matplotlibcpp::xlabel(xl);
+	matplotlibcpp::ylabel(yl);
+}
+
 void Image::getFileHeader(std::ifstream* file){
 	uint8_t readedByte{};
 	for(int i {0}; i<fileHeaderLength; ++i){

@@ -12,8 +12,11 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
+#include <cmath>
 
 #include "ChaoticMap.h"
+#include "../include/matplotlibcpp.h"
 
 /**
  * @brief	The Image class provides various methods in order to read BMP files, encrypt data, and save to the disk.
@@ -88,6 +91,20 @@ class Image
 		enum colorCode {blue=0, green=1, red=2};
 		void extractColor(colorCode color);
 
+		/**
+		 * @brief	Display a graph representing the pixel correlation (i.e. value at (x,y) vs (x+1, y)
+		 * @details Display the graph using the matplotlibcpp. The function generate random number and get the value at (x,y) and (x+1,y).
+		 *
+		 * @param nbrPixelDisplayed	Number of point on the graph.
+		 */
+		void displayPixelCorrelation(int nbrPixelDisplayed = 500);
+
+		/**
+		 * @brief	Display the distribution of byte value for the color given in parameter
+		 *
+		 * @param color Color of the distribution wanted
+		 */
+		void displayColorHistogram(colorCode color);
 
 	private:
 
@@ -120,7 +137,6 @@ class Image
 		
 		uint8_t fileHeader[fileHeaderLength]{};
 		std::vector<uint8_t> dibHeader{};
-		std::vector<uint8_t> pixelArray{};
 		std::vector<uint8_t> data{};
 
 };
