@@ -2,6 +2,8 @@ Chaos-based cryptography
 ========================
 > [Link to the initial repository on GitHub](https://github.com/NuxDD/chaos-based_cryptography)
 
+With the recents developments of data transmission, encryption became a real society concern. Traditional encryption algorithm like the Advanced Encryption Standard (AES), aren't suitable to image encryption due to large computational time, or because of the redundancy of the information in the data. This lead us to think that it might exist better algorithm for image encryption. In this paper, we describe a naive implementation for image encryption using chaotic maps. Basic analysis methods, such as visual, intensity and correlation, are used to evaluate the proposed algorithm in regards of image encryption. We finally show that the proposed algorithm, can be a good basis to image encryption.
+
 _Disclaimer : This project provides an introduction to the chaos-based cryptography, the algorithm isn't proved resistant to known crypt-analytical attacks. Be careful with your data._
 
 Code structure
@@ -55,10 +57,9 @@ Example, to encrypt the file _grenoble\_city.bmp_ in the input folder, and save 
 Todos and issues
 -----------------
 
-* Add the .bib support report
-* Add an introduction to README.md
 * Seg fault happens everytime the plot figure are closed (prob. an issue of the lib ?)
 * Getters need optimization to reduce exec time
+* Add references report
 
 References
 -----------
