@@ -1,0 +1,40 @@
+In order to prove the bijectivity of the bitwise operation XOR, we need to prove the injectivity and the surjectivity of the operation. The surjectivity is pretty trivial, however, to prove that the XOR operation is a one-to-one mapping seems a little bit tricky. 
+
+Let's denote the XOR operation as a function $f:\mathbb{N} \times \mathbb{N} \rightarrow \mathbb{N}$. We want to prove that $f(x,y)=f(x',y) \Rightarrow x=x'$ (we will suppose $y$ being a constant, \textit{the encryption key}). Let's take $(x,y) \in \mathbb{N}^2$ as follow :
+
+\begin{equation}
+	x = \sum_{i=0}^{\infty}\alpha_i 2^i \qquad \text{where } \forall i \in \mathbb{N}, \alpha_i \in \{0,1\}
+\end{equation} 
+
+and,
+
+\begin{equation}
+	y = \sum_{i=0}^{\infty}\beta_i 2^i \qquad \text{where } \forall i \in \mathbb{N}, \beta_i \in \{0,1\}
+\end{equation} 
+
+Analytically, we can rewrite the $f(x,y)$ function as :
+
+\begin{equation}
+	f(x,y)=\sum_{i=0}^{\infty} |\alpha_i - \beta_i| 2^i
+\end{equation}
+
+Hence, if we take $x'$ as :
+
+\begin{equation}
+	x' = \sum_{i=0}^{\infty}\gamma_i 2^i \qquad \text{where } \forall i \in \mathbb{N}, \gamma_i \in \{0,1\}
+\end{equation} 
+
+The injectivity condition leads us to :
+
+\begin{equation}
+	f(x,y)=f(x', y)=\sum_{i=0}^{\infty} |\alpha_i - \beta_i| 2^i=\sum_{i=0}^{\infty} |\gamma_i - \beta_i|2^i
+\end{equation}
+
+Hence, by polynomial identification, we got :
+
+\begin{equation}
+	|\alpha_i - \beta_i| = |\gamma_i - \beta_i|
+\end{equation}
+
+This condition implies $x=x'$ which ends the demonstration.
+Note that from the analytical definition of the XOR operation, it is clear that the inverse of the XOR operation is the XOR operation itself.

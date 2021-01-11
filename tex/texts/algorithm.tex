@@ -1,0 +1,41 @@
+\subsection{Encryption}
+\footnote{The XOR bitwise operation is denoted as $\oplus$.}
+Let's suppose a 2D image $I$ of size $m \times n$, $(m, n) \in \mathbb{N}^2$, with a pixel encoding of $k \in 8\mathbb{N}$ bits per pixel.  \\
+In most cases, each pixel of an image is represented as \textit{Red-Green-Blue-alpha (RGBa)} encoded on a byte each (256 possible values for each). 
+This lead us to represent the data of the image $I$ as a set $D$ of cardinality $N=m \times n \times k/8$ as follow : 
+\begin{equation*}
+	D = \{d_1, d_2, ... , d_{N-1}, d_{N}\}
+\end{equation*}
+with $d_i \in \{0, 1, ..., 255\}, \forall i \leq N$.
+
+\subsubsection{Step 1 : Generation of the encryption key}
+The first step is to generate a sequence of numbers $S$ of length $N$ for encryption. This is where we are going to use the chaotic maps, by choosing parameters and initial conditions, we're able to generate large set of real numbers in no time.
+We, then, want to define a map $f: U \subset \mathbb{R} \rightarrow \{0,1,...,255\}$, this can be easily done for every chaotic map, an example of this is done \textit{Appendix 2}. \\
+As required, we can repeat this step $M \in \mathbb{N}$ times in order to generate an encryption key using the following equation :
+\begin{align*}
+	K &= f_1(S_1) \oplus f_2(S_2) \oplus ... \oplus f_M(S_M) \\
+	&= \{ k_1, k_2, ..., k_{N-1}, k_{N}\}
+\end{align*}
+
+
+\subsubsection{Step 2 : Encryption of the image}
+The second step is the encryption of the image $I$. The data is simply encrypted as follow, we denote the data of the encrypted image as a set $E$ of length $N$ :
+\vspace{-0.3em}
+\begin{align*}
+	E &= D \oplus K \\
+	&= \{e_1, e_2,..., e_{N-1}, e_N\}
+\end{align*}
+
+In fact, we could, if it is required, generate new keys and XOR those keys with the new encrypted image.
+
+\subsection{Decryption}
+The main concern while doing cryptography is that we want the encryption to be reversible : indeed, we want to be able to decrypt the encrypted message, image, etc... \\
+Mathematically, this means that the map used to encrypt needs to be bijective.
+As we proved in the \textit{Appendix 1}, the XOR bitwise operation is a bijective map and the inverse function is the XOR bitwise operation itself. \\
+This property of the XOR operation leads us to the following equation to decrypt the encrypted image :
+\vspace{-0.4em}
+\begin{align*}
+	D &= E \oplus K \\
+	&= \{d_1, d_2, ..., d_{N-1}, d_N\}
+\end{align*}
+

@@ -1,0 +1,13 @@
+For this paragraph, we will denote the floor function of $x$ as $\left\lfloor x \right\rfloor$. \\
+
+Let's consider the discrete logistic map defined as : 
+
+\begin{equation*}
+	r_{n+1} = \mu r_n (1-r_n), \quad \forall n \in \mathbb{N}
+\end{equation*}
+
+Since at any point, we have $0 \leq r_n \leq 1$, a map $f:U \subset \mathbb{R} \rightarrow \{0,1,...,255\}$ which satisfy the requirement for the paper, can be the following map :
+
+\begin{equation*}
+	\forall x \in U, f(x) = \left \lfloor x * 255 \right \rfloor
+\end{equation*}
