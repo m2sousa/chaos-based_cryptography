@@ -1,0 +1,42 @@
+\documentclass[eng]{tex/class/phynum-class}
+
+\title{Chaos-based symmetric cryptography : a naive implementation for image encryption}
+\shorttitle{Chaos-based symmetric cryptography}
+       
+\author[1]{DE SOUSA Maxime}
+\affil[1]{Université Grenoble-Alpes, Physique parcours recherche fondamentale, Grenoble, France}
+
+\firstauthor{DE SOUSA Maxime}
+
+\abstract{With the recents developments of data transmission, encryption become a real society concern. Traditional encryption algorithm like the Advanced Encryption Standard (AES), aren't suitable to image encryption due to large computational time, or because of the redundancy of the information in the data. This lead us to think that it might exist better algorithm for image encryption. In this paper, we describe a naive implementation for image encryption using chaotic maps. Basic analysis methods, such as visual, intensity and correlation, are used to evaluate the proposed algorithm in regards of image encryption. We finally show that the proposed algorithm, can be a good basis to image encryption.}
+
+\keywords{cryptography, chaos, dynamical systems, symmetric-key, encryption}
+
+\begin{document}
+
+%include title, authors, abstract, etc.
+\maketitle
+\thispagestyle{fancy}
+
+%main
+\section{Introduction}
+	\input{tex/texts/introduction.tex}
+\section{Algorithm}
+	\input{tex/texts/algorithm.tex}
+\section{Results and discussion}
+	\input{tex/texts/resultsintro.tex}
+\subsection{Visual analysis}
+	\input{tex/texts/visualanalysis.tex}
+\subsection{Histogram analysis}
+	\input{tex/texts/histogramanalysis.tex}
+\subsection{Correlation between adjacent pixels}
+	\input{tex/texts/correlationanalysis.tex}
+\section{Conclusion}
+	\input{tex/texts/conclusion.tex}
+\section{Appendix}
+\subsection{Demonstration of the bijectivity of the bitwise operation XOR}
+	\input{tex/texts/proofXorBijectivity.tex}
+\subsection{Mapping to a byte of the logistic map}
+	\input{tex/texts/mappinglogistic.tex}
+\end{document}
+
