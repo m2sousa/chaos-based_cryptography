@@ -59,7 +59,6 @@ Todos and issues
 
 * Seg fault happens everytime the plot figure are closed (prob. an issue of the lib ?)
 * Getters need optimization to reduce exec time
-* Add references report
 
 References
 -----------
